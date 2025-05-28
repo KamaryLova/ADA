@@ -1,0 +1,13 @@
+project My_Ada_App is
+   for Source_Dirs use ("src");
+   for Main use ("main.adb");
+
+   package Compiler is
+      for Default_Switches ("Ada") use ("-O2");
+   end Compiler;
+
+   package Builder is
+      for Executable ("main.adb") use "my_ada_app";
+   end Builder;
+end My_Ada_App;
+
