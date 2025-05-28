@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     triggers {
-        githubPush()
+        pollSCM '*/5 * * * *'
     }
 
     stages {
@@ -10,10 +10,10 @@ pipeline {
             steps {
                 echo 'Building..'
 		sh '''
-		cat my_adda_app.gpr
+		cat my_ada_app.gpr
 		gprbuild -P my_ada_app.gpr
 		ls -l
-		./my_adda_app
+		./my_ada_app
 		'''	
             }
         }
@@ -26,8 +26,9 @@ pipeline {
             steps {
                 echo 'Deploying....'
 		sh '''
-		mkdir workspace
 		cp my_ada_app workspace
+		ls -al workspace
+		'''
             }
         }
     }
