@@ -22,9 +22,9 @@ pipeline {
                 echo 'Testing..'
             }
         }
-        stage('Deploy') {
+        stage('Publish') {
             steps {
-                echo 'Deploying....'
+                echo 'Pubish....'
 		sh '''
 		cp my_ada_app workspace
 		ls -al workspace
